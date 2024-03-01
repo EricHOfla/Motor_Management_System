@@ -1,107 +1,65 @@
-
 <?php
 session_start();
 include('config.php');
 
+// Remove error reporting suppression for debugging
+// error_reporting(0);
 
-$vhid=$_GET['vhid'];
+$vhid = $_GET['vhid'];
 
+if (isset($_POST['paynow'])) {
+    if (!empty($_POST["email"])) {
+        $email = $_POST["email"];
+        $mobileno = $_POST['phone'];
+        $address = $_POST['address'];
+        $file = $_POST['file'];
+        $pay = $_POST['pay'];
+        $normal=1;
+        $useremail = $_SESSION['login'];
+        // Remove duplicate declaration of $vhid
+        // $vhid = $_GET['vhid'];
 
-error_reporting(0);
-
-if(isset($_POST['paynow'] )) //if submit btn is pressed
-
- {
-    if(!empty($_POST["email"])) {
-        $email= $_POST["email"]; 
-        $mobileno=$_POST['phone'];
-        $address=$_POST['address'];
-        $file=$_POST['file'];
-        $pay=$_POST['pay'];
-        $useremail=$_SESSION['login'];
-        $status=0;
-        $vhid=$_GET['vhid'];
-        
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)===false) {
-
+        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
             echo "error : You did not enter a valid email.";
-        }
-	   else{
-            // $check_email = 
-
-            $sql ="SELECT EmailId FROM tblusers WHERE EmailId=:email";
-            $query= $dbh -> prepare($sql);
-            $query-> bindParam(':email', $email, PDO::PARAM_STR);
-            $query-> execute();
-            $results = $query -> fetchAll(PDO::FETCH_OBJ);
-            $cnt=1;
-            // if($query -> rowCount() > 0)
-            // {
-            
-            // } else{
-            
-            //     echo "<span style='color:green'> Email available for Registration .</span>";
-            //  echo "<script>$('#submit').prop('disabled',false);</script>";
-            // }
-
-
-
-         
-    if (filter_var($query -> rowCount() == 0)) // Validate email address
-            {
-                echo "<script>alert('use Email used in Registration .');</script>";
+        } else {
+            $sql = "SELECT EmailId FROM tblusers WHERE EmailId=:email";
+            $query = $dbh->prepare($sql);
+            $query->bindParam(':email', $$useremail, PDO::PARAM_STR);
+            $query->execute();
+            $rowCount = $query->rowCount(); // Get the count of rows
+            if ($rowCount == 0) {
+                echo "<script>alert('Use Email in Registration.');</script>";
+            } else {
+                $sql = "INSERT INTO tblbooking(userEmail,VehicleId,Phone,Address,File,Paymethod,Status)
+                        VALUES(:useremail,:vhid,:mobileno,:address,:file,:pay,:status)";
+                $insertQuery = $dbh->prepare($sql);
+                $insertQuery->bindParam(':useremail', $useremail, PDO::PARAM_STR);
+                $insertQuery->bindParam(':vhid', $vhid, PDO::PARAM_STR);
+                $insertQuery->bindParam(':mobileno', $mobileno, PDO::PARAM_STR);
+                $insertQuery->bindParam(':address', $address, PDO::PARAM_STR);
+                $insertQuery->bindParam(':file', $file, PDO::PARAM_STR);
+                $insertQuery->bindParam(':pay', $pay, PDO::PARAM_STR);
+                $insertQuery->bindParam(':status', $status, PDO::PARAM_STR);
+                if ($insertQuery->execute()) {
+                    $sql = "UPDATE tblvehicles SET normal = :normal WHERE id = :id";
+                    $updateQuery = $dbh->prepare($sql);
+                    $updateQuery->bindParam(':normal',$normal, PDO::PARAM_STR);
+                    $updateQuery->bindParam(':id', $vhid, PDO::PARAM_STR);
+                    if ($updateQuery->execute()) {
+                        echo "<script>alert('Payment successful.');</script>";
+                    } else {
+                        echo "<script>alert('Something went wrong while updating vehicle status. Please try again');</script>";
+                    }
+                } else {
+                    echo "<script>alert('Error in inserting data.');</script>";
+                }
             }
-
-     else
-               {
-               
-                $sql="INSERT INTO tblbooking(userEmail,VehicleId,Phone,Address,File,Paymethod,Status)
-                VALUES(:useremail,:vhid,:mobileno,:address,:file,:pay,:status)";
-               $query = $dbh->prepare($sql);
-               $query->bindParam(':useremail',$useremail,PDO::PARAM_STR);
-               $query->bindParam(':vhid',$vhid,PDO::PARAM_STR);
-               $query->bindParam(':mobileno',$mobileno,PDO::PARAM_STR);
-               $query->bindParam(':address',$address,PDO::PARAM_STR);
-               $query->bindParam(':file',$file,PDO::PARAM_STR);
-               $query->bindParam(':pay',$pay,PDO::PARAM_STR);
-               $query->bindParam(':status',$status,PDO::PARAM_STR);
-               $query->execute();
-               $lastInsertId = $dbh->lastInsertId();
-               if($lastInsertId)
-               {
-                echo "<script>alert('Payment successfull.');</script>";
-               
-               
-               }
-               else{
-                 echo "<script>alert('Something went wrong. Please try again');</script>";
-               }
-               
-                
-             }
- 
         }
-
-        
-
+    } else {
+        echo "<script>alert('Email is required.');</script>";
     }
-
-
-   }
-
-
-
-
-
-
-
-
-
-
-
-    
-    ?>
-    
+}
+?>
 
 
 
@@ -153,7 +111,7 @@ if(isset($_POST['paynow'] )) //if submit btn is pressed
                      <span style="font-size: 28px; font-weight: 700; margin:0 40%">Payment Form </span>
                     
                   </ul>
-                  <?php echo $message ?>
+                
                </div>
             </div>
             <section class="contact-page inner-page">

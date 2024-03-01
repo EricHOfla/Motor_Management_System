@@ -54,9 +54,9 @@ move_uploaded_file($_FILES["img3"]["tmp_name"],"img/vehicleimages/".$_FILES["img
 move_uploaded_file($_FILES["img4"]["tmp_name"],"img/vehicleimages/".$_FILES["img4"]["name"]);
 move_uploaded_file($_FILES["img5"]["tmp_name"],"img/vehicleimages/".$_FILES["img5"]["name"]);
 
-$sql="INSERT INTO `tblvehicles`(`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `SeatingCapacity`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`,
- `Displacement`, `Maxpower`, `Maxtorque`, `Dimension`, `Wheelbase`, `Netweight`, `Mingroundclearence`, `Fronttyre`, `Reartyre`, `Fueltankcapacity`, `Sittingheight`,
-  `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`) 
+$sql="INSERT INTO tblvehicles(VehiclesTitle, VehiclesBrand, VehiclesOverview, PricePerDay, FuelType, ModelYear, SeatingCapacity, Vimage1, Vimage2, Vimage3, Vimage4, Vimage5,
+ Displacement, Maxpower, Maxtorque, Dimension, Wheelbase, Netweight, Mingroundclearence, Fronttyre, Reartyre, Fueltankcapacity, Sittingheight,
+  AirConditioner, PowerDoorLocks, AntiLockBrakingSystem, BrakeAssist, PowerSteering, DriverAirbag, PassengerAirbag, PowerWindows, CDPlayer, CentralLocking, CrashSensor, LeatherSeats) 
 VALUES(:vehicletitle,:brand,:vehicleoverview,:priceperday,:fueltype,:modelyear,:seatingcapacity,:vimage1,:vimage2,:vimage3,:vimage4,:vimage5,
 :displacement,:maxpower,:maxtorque,:dimension,:wheelbase,:netweight,:mingroundclearence,:fronttyre,:reartyre,:fueltankcapacity,:sittingheight,
 :airconditioner,:powerdoorlocks,:antilockbrakingsys,:brakeassist,:powersteering,:driverairbag,:passengerairbag,:powerwindow,:cdplayer,:centrallocking,:crashcensor,:leatherseats)";
@@ -69,13 +69,24 @@ $query->bindParam(':fueltype',$fueltype,PDO::PARAM_STR);
 $query->bindParam(':modelyear',$modelyear,PDO::PARAM_STR);
 $query->bindParam(':seatingcapacity',$seatingcapacity,PDO::PARAM_STR);
 
-$query->bindParam(':seatingcapacity',$seatingcapacity,PDO::PARAM_STR);
-
 $query->bindParam(':vimage1',$vimage1,PDO::PARAM_STR);
 $query->bindParam(':vimage2',$vimage2,PDO::PARAM_STR);
 $query->bindParam(':vimage3',$vimage3,PDO::PARAM_STR);
 $query->bindParam(':vimage4',$vimage4,PDO::PARAM_STR);
 $query->bindParam(':vimage5',$vimage5,PDO::PARAM_STR);
+
+$query->bindParam(':displacement',$displ,PDO::PARAM_STR);
+$query->bindParam(':maxpower',$maxpower,PDO::PARAM_STR);
+$query->bindParam(':maxtorque',$maxtorque,PDO::PARAM_STR);
+$query->bindParam(':dimension',$dimens,PDO::PARAM_STR);
+$query->bindParam(':wheelbase',$wheelbase,PDO::PARAM_STR);
+$query->bindParam(':netweight',$netweight,PDO::PARAM_STR);
+$query->bindParam(':mingroundclearence',$minground,PDO::PARAM_STR);
+$query->bindParam(':fronttyre',$ftyre,PDO::PARAM_STR);
+$query->bindParam(':reartyre',$rtyre,PDO::PARAM_STR);
+$query->bindParam(':fueltankcapacity',$fuel,PDO::PARAM_STR);
+$query->bindParam(':sittingheight',$sitting,PDO::PARAM_STR);
+
 $query->bindParam(':airconditioner',$airconditioner,PDO::PARAM_STR);
 $query->bindParam(':powerdoorlocks',$powerdoorlocks,PDO::PARAM_STR);
 $query->bindParam(':antilockbrakingsys',$antilockbrakingsys,PDO::PARAM_STR);
@@ -114,7 +125,7 @@ $error="Something went wrong. Please try again";
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Bike Rental Portal | Admin Post Vehicle</title>
+	<title>Bike Seller | Admin Post Vehicle</title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -313,7 +324,7 @@ Image 5<input type="file" name="img5">
 
 
 <table>
-	<form action="" method="post" enctype="multipart/form-data">
+	
                   <thead>
                     <tr>
                       <th colspan="2">Technical Parameter</th>
@@ -380,21 +391,11 @@ Image 5<input type="file" name="img5">
 </tr>
 
                   </tbody>
-				</form>
+				
                 </table>
 
 
 </div>
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -415,7 +416,6 @@ Image 5<input type="file" name="img5">
 <input type="checkbox" id="brakeassist" name="brakeassist" value="1">
 <label for="brakeassist"> Brake Assist </label>
 <br><br>
-<input type="checkbox" id="powersteering" name="powersteering" value="1">
 <input type="checkbox" id="powersteering" name="powersteering" value="1">
 <label for="inlineCheckbox5"> Smooth Handling </label>
 </div>
@@ -440,7 +440,7 @@ Image 5<input type="file" name="img5">
 						</div>
 						
 
-											<div class="form-group">
+											<div class="form-group" style="margin: 30px 47rem">
 												<div class="col-sm-8 col-sm-offset-2">
 													<button class="btn btn-default" type="reset">Cancel</button>
 													<button class="btn btn-primary" name="submit" type="submit">Save changes</button>

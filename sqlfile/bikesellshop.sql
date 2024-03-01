@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 28, 2024 at 11:36 AM
+-- Generation Time: Feb 20, 2024 at 07:10 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -92,8 +92,10 @@ INSERT INTO `tblbrands` (`id`, `BrandName`, `CreationDate`, `UpdationDate`) VALU
 (1, 'SUZUKI', '2017-06-18 16:24:34', '2023-09-26 12:21:01'),
 (2, 'Bajaj', '2017-06-18 16:24:50', NULL),
 (3, 'Honda', '2017-06-18 16:25:03', NULL),
-(4, 'Yamaha', '2017-06-18 16:25:24', '2024-02-27 12:48:23'),
-(5, 'Ducati', '2017-06-19 06:22:13', '2024-02-27 12:48:33');
+(4, 'Suzuki', '2017-06-18 16:25:13', NULL),
+(5, 'Yamaha', '2017-06-18 16:25:24', NULL),
+(7, 'Ducati', '2017-06-19 06:22:13', NULL),
+(8, 'Honda', '2023-09-26 12:21:17', NULL);
 
 -- --------------------------------------------------------
 
@@ -113,7 +115,7 @@ CREATE TABLE `tblcontactusinfo` (
 --
 
 INSERT INTO `tblcontactusinfo` (`id`, `Address`, `EmailId`, `ContactNo`) VALUES
-(1, 'Sonatube, Kigali, Rwanda 																							', 'test@test.com', '0783655587');
+(1, 'Test Demo test demo																									', 'test@test.com', '8585233222');
 
 -- --------------------------------------------------------
 
@@ -257,17 +259,6 @@ CREATE TABLE `tblvehicles` (
   `Vimage3` varchar(120) DEFAULT NULL,
   `Vimage4` varchar(120) DEFAULT NULL,
   `Vimage5` varchar(120) DEFAULT NULL,
-  `Displacement` int(11) DEFAULT NULL,
-  `Maxpower` int(11) DEFAULT NULL,
-  `Maxtorque` int(11) DEFAULT NULL,
-  `Dimension` int(11) DEFAULT NULL,
-  `Wheelbase` int(11) DEFAULT NULL,
-  `Netweight` int(11) DEFAULT NULL,
-  `Mingroundclearence` int(11) DEFAULT NULL,
-  `Fronttyre` int(11) DEFAULT NULL,
-  `Reartyre` int(11) DEFAULT NULL,
-  `Fueltankcapacity` int(11) DEFAULT NULL,
-  `Sittingheight` int(11) DEFAULT NULL,
   `AirConditioner` int(11) DEFAULT NULL,
   `PowerDoorLocks` int(11) DEFAULT NULL,
   `AntiLockBrakingSystem` int(11) DEFAULT NULL,
@@ -288,13 +279,13 @@ CREATE TABLE `tblvehicles` (
 -- Dumping data for table `tblvehicles`
 --
 
-INSERT INTO `tblvehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `SeatingCapacity`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `Displacement`, `Maxpower`, `Maxtorque`, `Dimension`, `Wheelbase`, `Netweight`, `Mingroundclearence`, `Fronttyre`, `Reartyre`, `Fueltankcapacity`, `Sittingheight`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
-(1, 'SS400', 2, 'Slowly spreading its cards this year, the Ace of Bajaj Autos is still not on the table. With the expectations like Pulsar 400SS or Pulsar SS400, the Ace (400SS) would be the commander of the Pulsar series. It would be a benchmark for the other motorcycle manufacturers as the competition for more performance oriented bikes will definitely rise this year.', 345345, 'Diesel', 2022, 2, 'Screenshot 2024-02-19 170841.png', 'Screenshot 2024-02-19 170903.png', 'Screenshot 2024-02-19 170920.png', 'Screenshot 2024-02-19 170941.png', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, '2017-06-19 11:46:23', '2024-02-19 15:18:25'),
-(2, 'RS200', 3, 'The Pulsar is by far the most successful brand Bajaj has managed to create in the recent past.It is also fast, no doubt. But, its true highlight is its easy to ride nature. ', 859, 'Diesel', 2015, 2, 'bike_755x430.png', 'Screenshot 2024-02-19 172132.png', 'front-image.jpg', 'Screenshot 2024-02-19 172031.png', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, NULL, NULL, '2017-06-19 16:16:17', '2024-02-19 15:24:50'),
-(3, 'R1', 4, ' The Suzuki GSX-R1000 is a sport bike from Suzuki GSX-R series of motorcycles.It was introduced in 2001 to replace the GSX-R1100 and is powered by a liquid-cooled 999 cc (61.0 cu in) inline four-cylinder, four-stroke engine.', 563, 'CNG', 2012, 1, 'Screenshot 2024-02-19 171218.png', 'Screenshot 2024-02-19 171253.png', 'Screenshot 2024-02-19 170802.png', 'Screenshot 2024-02-19 170734.png', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, 1, NULL, '2017-06-19 16:18:20', '2024-02-19 15:28:13'),
-(4, 'Duke390', 1, ' The KTM 390 DUKE breathes life into values that have made motorcycling so amazing for decades. It combines maximum riding pleasure with optimum user value and comes out on top wherever nimble handling counts. Light as a feather, powerful and packed with state-of-the-art technology, it guarantees a thrilling ride, whether youre in the urban jungle or a forest of bends. 390 DUKE – nowhere you will find more motorcycle per euro.', 5636, 'Petrol', 2012, 2, 'Screenshot 2024-02-19 170514.png', 'Screenshot 2024-02-19 173433.png', 'Screenshot 2024-02-19 173606.png', 'Screenshot 2024-02-19 173415.png', '', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2017-06-19 16:18:43', '2024-02-19 15:37:27'),
-(5, 'R1', 5, 'The YZF-R1® features a lightweight and compact crossplane crankshaft, inline-four-cylinder, 998cc high output engine. Featuring titanium fracture-split connecting rods, an offset cylinder block and magnesium covers, the motor delivers extremely high horsepower and a strong pulse of linear torque for outstanding performance, all wrapped in aerodynamic MotoGP®-style bodywork.', 345345, 'Petrol', 2018, 1, 'Screenshot 2024-02-19 173942.png', 'Screenshot 2024-02-19 174119.png', 'Screenshot 2024-02-19 174018.png', 'Screenshot 2024-02-19 174338.png', NULL, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, '2017-06-20 17:57:09', '2024-02-19 15:46:25'),
-(6, 'D1', 5, ' Spreading its cards this year, the Ace of Ducati Autos is still not on the table. With the expectations like Pulsar 406DD or Pulsar DD400, the Ace (400DD) would be the commander of the Pulsar series. It would be a benchmark for the other motorcycle manufacturers as the competition for more performance oriented bikes will definitely rise this year.', 6070, 'CNG', 2023, 2, 'Screenshot 2024-02-19 175505.png', 'Screenshot 2024-02-19 175632.png', 'Screenshot 2024-02-19 175610.png', 'Screenshot 2024-02-19 175550.png', 'Screenshot 2024-02-19 175525.png', 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, NULL, NULL, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, '2024-02-19 16:00:50', '2024-02-27 13:49:50');
+INSERT INTO `tblvehicles` (`id`, `VehiclesTitle`, `VehiclesBrand`, `VehiclesOverview`, `PricePerDay`, `FuelType`, `ModelYear`, `SeatingCapacity`, `Vimage1`, `Vimage2`, `Vimage3`, `Vimage4`, `Vimage5`, `AirConditioner`, `PowerDoorLocks`, `AntiLockBrakingSystem`, `BrakeAssist`, `PowerSteering`, `DriverAirbag`, `PassengerAirbag`, `PowerWindows`, `CDPlayer`, `CentralLocking`, `CrashSensor`, `LeatherSeats`, `RegDate`, `UpdationDate`) VALUES
+(1, 'SS400', 2, 'Slowly spreading its cards this year, the Ace of Bajaj Autos is still not on the table. With the expectations like Pulsar 400SS or Pulsar SS400, the Ace (400SS) would be the commander of the Pulsar series. It would be a benchmark for the other motorcycle manufacturers as the competition for more performance oriented bikes will definitely rise this year.', 345345, 'Diesel', 2022, 2, 'Screenshot 2024-02-19 170841.png', 'Screenshot 2024-02-19 170903.png', 'Screenshot 2024-02-19 170920.png', 'Screenshot 2024-02-19 170941.png', '', 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, '2017-06-19 11:46:23', '2024-02-19 15:18:25'),
+(2, 'RS200', 3, 'The Pulsar is by far the most successful brand Bajaj has managed to create in the recent past.It is also fast, no doubt. But, its true highlight is its easy to ride nature. ', 859, 'Diesel', 2015, 2, 'bike_755x430.png', 'Screenshot 2024-02-19 172132.png', 'front-image.jpg', 'Screenshot 2024-02-19 172031.png', '', 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, NULL, NULL, '2017-06-19 16:16:17', '2024-02-19 15:24:50'),
+(3, 'R1', 4, ' The Suzuki GSX-R1000 is a sport bike from Suzuki GSX-R series of motorcycles.It was introduced in 2001 to replace the GSX-R1100 and is powered by a liquid-cooled 999 cc (61.0 cu in) inline four-cylinder, four-stroke engine.', 563, 'CNG', 2012, 1, 'Screenshot 2024-02-19 171218.png', 'Screenshot 2024-02-19 171253.png', 'Screenshot 2024-02-19 170802.png', 'Screenshot 2024-02-19 170734.png', '', 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, 1, NULL, '2017-06-19 16:18:20', '2024-02-19 15:28:13'),
+(4, 'Duke390', 1, ' The KTM 390 DUKE breathes life into values that have made motorcycling so amazing for decades. It combines maximum riding pleasure with optimum user value and comes out on top wherever nimble handling counts. Light as a feather, powerful and packed with state-of-the-art technology, it guarantees a thrilling ride, whether youre in the urban jungle or a forest of bends. 390 DUKE – nowhere you will find more motorcycle per euro.', 5636, 'Petrol', 2012, 2, 'Screenshot 2024-02-19 170514.png', 'Screenshot 2024-02-19 173433.png', 'Screenshot 2024-02-19 173606.png', 'Screenshot 2024-02-19 173415.png', '', 1, 1, 1, 1, 1, 1, 1, 1, 1, NULL, NULL, NULL, '2017-06-19 16:18:43', '2024-02-19 15:37:27'),
+(5, 'R1', 5, 'The YZF-R1® features a lightweight and compact crossplane crankshaft, inline-four-cylinder, 998cc high output engine. Featuring titanium fracture-split connecting rods, an offset cylinder block and magnesium covers, the motor delivers extremely high horsepower and a strong pulse of linear torque for outstanding performance, all wrapped in aerodynamic MotoGP®-style bodywork.', 345345, 'Petrol', 2018, 1, 'Screenshot 2024-02-19 173942.png', 'Screenshot 2024-02-19 174119.png', 'Screenshot 2024-02-19 174018.png', 'Screenshot 2024-02-19 174338.png', NULL, 1, 1, 1, 1, 1, 1, 1, 1, NULL, 1, 1, 1, '2017-06-20 17:57:09', '2024-02-19 15:46:25'),
+(6, 'D1', 7, ' Spreading its cards this year, the Ace of Ducati Autos is still not on the table. With the expectations like Pulsar 406DD or Pulsar DD400, the Ace (400DD) would be the commander of the Pulsar series. It would be a benchmark for the other motorcycle manufacturers as the competition for more performance oriented bikes will definitely rise this year.', 6070, 'CNG', 2023, 2, 'Screenshot 2024-02-19 175505.png', 'Screenshot 2024-02-19 175632.png', 'Screenshot 2024-02-19 175610.png', 'Screenshot 2024-02-19 175550.png', 'Screenshot 2024-02-19 175525.png', NULL, NULL, 1, 1, 1, NULL, NULL, NULL, NULL, 1, 1, 1, '2024-02-19 16:00:50', NULL);
 
 --
 -- Indexes for dumped tables

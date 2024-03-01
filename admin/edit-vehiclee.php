@@ -55,8 +55,8 @@ $id=intval($_GET['id']);
 // move_uploaded_file($_FILES["img4"]["tmp_name"],"img/vehicleimages/".$_FILES["img4"]["name"]);
 // move_uploaded_file($_FILES["img5"]["tmp_name"],"img/vehicleimages/".$_FILES["img5"]["name"]);
 
-$sql="UPDATE tblvehicles SET VehiclesTitle=:vehicletitle,VehiclesBrand=:brand,VehiclesOverview=:vehicleoverview,PricePerDay=:priceperday,FuelType=:fueltype,ModelYear=:modelyear,
-SeatingCapacity=:seatingcapacity,Displacement=:displacement,Maxpower=:maxpower,Maxtorque=:maxtorque,Dimension=:dimension,Wheelbase=:wheelbase,Netweight=:netweight,Mingroundclearence=:mingroundclearence,Fronttyre=:fronttyre,Reartyre=:reartyre,Fueltankcapacity=:fueltankcapacity,Sittingheight=:sittingheight,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id";
+$sql="UPDATE `tblvehicles SET VehiclesTitle=:vehicletitle,VehiclesBrand=:brand,VehiclesOverview=:vehicleoverview,PricePerDay=:priceperday,FuelType=:fueltype,ModelYear=:modelyear,SeatingCapacity=:seatingcapacity,Displacement=:displacement,Maxpower=:maxpower,Maxtorque=:maxtorque,
+Dimension=:dimension,Wheelbase=:wheelbase,Netweight`=:netweight,Mingroundclearence=:mingroundclearence,Fronttyre=:fronttyre,Reartyre=:reartyre,Fueltankcapacity`=fueltankcapacity,`Sittingheight`=:seatingcapacity,AirConditioner=:airconditioner,PowerDoorLocks=:powerdoorlocks,AntiLockBrakingSystem=:antilockbrakingsys,BrakeAssist=:brakeassist,PowerSteering=:powersteering,DriverAirbag=:driverairbag,PassengerAirbag=:passengerairbag,PowerWindows=:powerwindow,CDPlayer=:cdplayer,CentralLocking=:centrallocking,CrashSensor=:crashcensor,LeatherSeats=:leatherseats where id=:id ";
 $query = $dbh->prepare($sql);
 $query->bindParam(':vehicletitle',$vehicletitle,PDO::PARAM_STR);
 $query->bindParam(':brand',$brand,PDO::PARAM_STR);
@@ -465,18 +465,17 @@ foreach($results as $result)
 <?php } ?>
 
 <br><br>
-<?php if($result->PowerSteering==1)
+<?php if($result->powersteering==1)
 {
 ?>
 
-<input type="checkbox" id="inlineCheckbox1" name="powersteering" checked value="1">
-<label for="inlineCheckbox3"> Smooth Handling </label>
-
+<input type="checkbox" id="inlineCheckbox1" name="SmoothHandling" checked value="1">
+<label for="inlineCheckbox2">Smooth Handling</label>
 </div>
 <?php } else { ?>
 
-	<input type="checkbox" id="inlineCheckbox1" name="powersteering" value="1">
-<label  for="inlineCheckbox3"> Smooth Handling </label>
+<input type="checkbox" id="inlineCheckbox1" name="SmoothHandling" value="1">
+<label for="inlineCheckbox2">Smooth Handling</label>
 </div>
 <?php } ?>
 <br><br>
@@ -487,7 +486,7 @@ foreach($results as $result)
 ?>
 <div class="checkbox checkbox-inline">
 <input type="checkbox" id="inlineCheckbox1" name="crashcensor" checked value="1">
-<label for="inlineCheckbox3" > Crash Sensor </label>
+<label for="inlineCheckbox3" style="margin: 0 20px;"> Crash Sensor </label>
 
 <?php } else {?>
 <div class="checkbox checkbox-inline">
@@ -500,12 +499,12 @@ foreach($results as $result)
 {
 ?>
 
-<input type="checkbox" id="inlineCheckbox1" name="centrallocking" checked value="1">
-<label for="inlineCheckbox3"> Central Locking </label>
+<input type="checkbox" id="inlineCheckbox1" name="CentralLocking" checked value="1">
+<label for="inlineCheckbox3"> CentralLocking </label>
 
 <?php } else {?>
 <div class="checkbox checkbox-inline">
-<input type="checkbox" id="inlineCheckbox1" name="centrallocking" value="1">
+<input type="checkbox" id="inlineCheckbox1" name="crasCentralLockingr" value="1">
 <label for="inlineCheckbox3"> Central Locking </label>
 
 <?php } ?>
