@@ -35,6 +35,16 @@ error_reporting(0);
 <link rel="apple-touch-icon-precomposed" href="assets/images/favicon-icon/apple-touch-icon-57-precomposed.png">
 <link rel="shortcut icon" href="assets/images/favicon-icon/24x24.png">
 <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,900" rel="stylesheet">
+
+<style>
+  .banner_content p,  .banner_content h1{
+background-color: rgb(167, 55, 55);
+color: rgb(255, 255, 255);
+padding: 20px;
+font-weight: 900;
+  }
+ 
+</style>
 </head>
 <body>
 
@@ -44,8 +54,8 @@ error_reporting(0);
 <!-- /Header -->
 
 <!-- Banners -->
-<section id="banner" class="banner-section" style="background-image: url(assets/images/front-image.png);">
-  <div class="container" >
+<section id="banner" class="banner-section" style="background: url(assets/images/hdd.JPG); ">
+  <div class="container">
     <div class="div_zindex" >
       <div class="row">
         <div class="col-md-5 col-md-push-7">

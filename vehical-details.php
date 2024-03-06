@@ -380,13 +380,10 @@ $_SESSION['brndid']=$result->bid;
           <form method="post">
           <?php if($_SESSION['login'])
               {?>
-              <div class="form-group">
-             
-         <?php   echo'  <a href=includes/payment.php?vhid='.$vhid.'' ?> class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Full Payment</a>
-              </div> 
+              
                <div class="form-group">
 
-               <?php   echo'  <a href=includes/payment75.php?vhid='.$vhid.'' ?> class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Partial 75%</a>
+               <?php   echo'  <a href=includes/payment75.php?vhid='.$vhid.'' ?> class="btn btn-xs uppercase" data-toggle="modal" data-dismiss="modal">Purchese</a>
                   </div>
           
                   <?php } else { ?>

@@ -20,16 +20,25 @@ if (strlen($_SESSION['alogin']) == 0) {
 
 	if (isset($_REQUEST['aeid'])) {
 		$aeid = intval($_GET['aeid']);
+		$id = intval($_GET['id']);
 		$status = 1;
+		$normal= 1;
 
 		$sql = "UPDATE tblbooking SET Status=:status WHERE  id=:aeid";
 		$query = $dbh->prepare($sql);
 		$query->bindParam(':status', $status, PDO::PARAM_STR);
 		$query->bindParam(':aeid', $aeid, PDO::PARAM_STR);
-		$query->execute();
+		
+		if ($query->execute()) {
+			$sql = "UPDATE tblvehicles SET normal=:normal WHERE id =:id";
+			$updateQuery = $dbh->prepare($sql);
+			$updateQuery->bindParam(':normal',$normal, PDO::PARAM_STR);
+			$updateQuery->bindParam(':id', $id, PDO::PARAM_STR);
+			$updateQuery->execute();
+				
 
 		$msg = "Booking Successfully Confirmed";
-	}
+	}}
 
 
 ?>
@@ -111,7 +120,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<th>Vehicle</th>
 												<th>Phone</th>
 												<th>Address</th>
-												<th>File</th>
+												<th>DOB</th>
 												<th>Payment</th>
 												<th>Method</th>
 												<th>Status</th>
@@ -126,7 +135,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 												<th>Vehicle</th>
 												<th>Phone</th>
 												<th>Address</th>
-												<th>File</th>
+												<th>DOB</th>
 												<th>Payment</th>
 												<th>Method</th>
 												<th>Status</th>
@@ -136,7 +145,7 @@ if (strlen($_SESSION['alogin']) == 0) {
 										</tfoot>
 										<tbody>
 
-											<?php $sql = "SELECT tblusers.FullName,tblbrands.BrandName,tblvehicles.VehiclesTitle,tblbooking.Phone,tblbooking.Address,tblbooking.File,tblbooking.Paymethod,tblbooking.paystatus,tblbooking.VehicleId as 
+											<?php $sql = "SELECT tblusers.FullName,tblbrands.BrandName,tblvehicles.VehiclesTitle,tblusers.ContactNo,tblusers.Address,tblusers.dob,tblbooking.Paymethod,tblbooking.paystatus,tblbooking.VehicleId as 
 											vid,tblbooking.Status,tblbooking.PostingDate,tblbooking.id  from 
 											tblbooking join tblvehicles on tblvehicles.id=tblbooking.VehicleId join tblusers on tblusers.EmailId=tblbooking.userEmail
 											 join tblbrands on tblvehicles.VehiclesBrand=tblbrands.id  ";
@@ -150,9 +159,9 @@ if (strlen($_SESSION['alogin']) == 0) {
 														<td><?php echo htmlentities($cnt); ?></td>
 														<td><?php echo htmlentities($result->FullName); ?></td>
 														<td><a href="edit-vehicle.php?id=<?php echo htmlentities($result->vid); ?>"><?php echo htmlentities($result->BrandName); ?> , <?php echo htmlentities($result->VehiclesTitle); ?></td>
-														<td><?php echo htmlentities($result->Phone); ?></td>
+														<td><?php echo htmlentities($result->ContactNo); ?></td>
 														<td><?php echo htmlentities($result->Address); ?></td>
-														<td><?php echo htmlentities($result->File); ?></td>
+														<td><?php echo htmlentities($result->dob); ?></td>
 														<td><?php
 															if ($result->paystatus == 1) {
 																echo htmlentities('Full');

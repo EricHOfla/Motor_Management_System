@@ -8,56 +8,50 @@ include('config.php');
 $vhid = $_GET['vhid'];
 
 if (isset($_POST['paynow'])) {
-    if (!empty($_POST["email"])) {
-        $email = $_POST["email"];
-        $mobileno = $_POST['phone'];
-        $address = $_POST['address'];
-        $file = $_POST['file'];
+    
+      //   $email = $_POST["email"];
+      //   $mobileno = $_POST['phone'];
+      //   $address = $_POST['address'];
+      //   $file = $_POST['file'];
         $pay = $_POST['pay'];
-        $normal=1;
+        $status=0;
+        $paystatus=$_POST['paystatus'];
         $useremail = $_SESSION['login'];
+        $userId=$_SESSION['id'];
         // Remove duplicate declaration of $vhid
         // $vhid = $_GET['vhid'];
 
-        if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
-            echo "error : You did not enter a valid email.";
-        } else {
-            $sql = "SELECT EmailId FROM tblusers WHERE EmailId=:email";
-            $query = $dbh->prepare($sql);
-            $query->bindParam(':email', $$useremail, PDO::PARAM_STR);
-            $query->execute();
-            $rowCount = $query->rowCount(); // Get the count of rows
-            if ($rowCount == 0) {
-                echo "<script>alert('Use Email in Registration.');</script>";
-            } else {
-                $sql = "INSERT INTO tblbooking(userEmail,VehicleId,Phone,Address,File,Paymethod,Status)
-                        VALUES(:useremail,:vhid,:mobileno,:address,:file,:pay,:status)";
+      //   if (filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+      //       echo "error : You did not enter a valid email.";
+      //   } else {
+            // $sql = "SELECT EmailId FROM tblusers WHERE EmailId=:email";
+            // $query = $dbh->prepare($sql);
+            // $query->bindParam(':email', $$useremail, PDO::PARAM_STR);
+            // $query->execute();
+            // $rowCount = $query->rowCount(); // Get the count of rows
+            // if ($rowCount == 0) {
+            //     echo "<script>alert('Use Email in Registration.');</script>";
+            // } else {
+                $sql = "INSERT INTO tblbooking(userId,userEmail,VehicleId,Paymethod,Status,paystatus)
+                        VALUES(:userId,:useremail,:vhid,:pay,:status,:paystatus)";
                 $insertQuery = $dbh->prepare($sql);
+                $insertQuery->bindParam(':userId', $userId, PDO::PARAM_STR);
                 $insertQuery->bindParam(':useremail', $useremail, PDO::PARAM_STR);
                 $insertQuery->bindParam(':vhid', $vhid, PDO::PARAM_STR);
-                $insertQuery->bindParam(':mobileno', $mobileno, PDO::PARAM_STR);
-                $insertQuery->bindParam(':address', $address, PDO::PARAM_STR);
-                $insertQuery->bindParam(':file', $file, PDO::PARAM_STR);
+                
+               //  $insertQuery->bindParam(':mobileno', $mobileno, PDO::PARAM_STR);
+               //  $insertQuery->bindParam(':address', $address, PDO::PARAM_STR);
+               //  $insertQuery->bindParam(':file', $file, PDO::PARAM_STR);
                 $insertQuery->bindParam(':pay', $pay, PDO::PARAM_STR);
                 $insertQuery->bindParam(':status', $status, PDO::PARAM_STR);
-                if ($insertQuery->execute()) {
-                    $sql = "UPDATE tblvehicles SET normal = :normal WHERE id = :id";
-                    $updateQuery = $dbh->prepare($sql);
-                    $updateQuery->bindParam(':normal',$normal, PDO::PARAM_STR);
-                    $updateQuery->bindParam(':id', $vhid, PDO::PARAM_STR);
-                    if ($updateQuery->execute()) {
+                $insertQuery->bindParam(':paystatus', $paystatus, PDO::PARAM_STR);
+               // $insertQuery->execute();
+                    if ( $insertQuery->execute()) {
                         echo "<script>alert('Payment successful.');</script>";
                     } else {
                         echo "<script>alert('Something went wrong while updating vehicle status. Please try again');</script>";
                     }
-                } else {
-                    echo "<script>alert('Error in inserting data.');</script>";
-                }
-            }
-        }
-    } else {
-        echo "<script>alert('Email is required.');</script>";
-    }
+        
 }
 ?>
 
@@ -128,39 +122,45 @@ if (isset($_POST['paynow'])) {
 								  
                                     <div class="form-group col-sm-12">
                                        <!-- <label for="exampleInputEmail1">First Name</label> -->
-                                       <input class="form-control" type="text" name="firstname" value="" id="example-text-input" placeholder="First Name"> 
+                                       <!-- <input class="form-control" type="text" name="firstname" value="" id="example-text-input" placeholder="First Name">  -->
                                     </div>
                                     <div class="form-group col-sm-6">
                                        <!-- <label for="exampleInputEmail1">Last Name</label> -->
-                                       <input class="form-control" type="text" name="lastname" id="example-text-input-2" placeholder="Last Name"> 
+                                       <!-- <input class="form-control" type="text" name="lastname" id="example-text-input-2" placeholder="Last Name">  -->
                                     </div>
                                     <div class="form-group col-sm-6">
                                        <!-- <label for="exampleInputEmail1">User Name</label> -->
-                                       <input class="form-control" type="text" name="username" id="example-text-input" placeholder="UserName"> 
+                                       <!-- <input class="form-control" type="text" name="username" id="example-text-input" placeholder="UserName">  -->
                                     </div>
                                     <div class="form-group col-sm-6">
                                        <!-- <label for="exampleInputEmail1">Email address</label> -->
-                                       <input type="text" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> <small id="emailHelp" class="form-text text-muted">We"ll never share your email with anyone else.</small> 
+                                       <!-- <input type="text" class="form-control" name="email" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email"> <small id="emailHelp" class="form-text text-muted">We"ll never share your email with anyone else.</small>  -->
                                     </div>
                                     <div class="form-group col-sm-6">
                                        <!-- <label for="exampleInputEmail1">Phone number</label> -->
-                                       <input class="form-control" type="text" name="phone" id="example-tel-input-3" placeholder="Phone"> <small class="form-text text-muted">We"ll never share your contact info with anyone else.</small> 
+                                       <!-- <input class="form-control" type="text" name="phone" id="example-tel-input-3" placeholder="Phone"> <small class="form-text text-muted">We"ll never share your contact info with anyone else.</small>  -->
                                     </div>
                                     <div class="form-group col-sm-6">
                                        <!-- <label for="exampleInputEmail1">Phone number</label> -->
-                                       <input class="form-control" type="text" name="phone" id="example-tel-input-3" placeholder="Phone"> 
+                                       <!-- <input class="form-control" type="text" name="phone" id="example-tel-input-3" placeholder="Phone">  -->
                                     </div>
                                    
                                     <div class="form-group col-sm-6">
-                                       <label for="exampleInputPassword1">ID/PASSPORT</label>
-                                       <input type="file" class="form-control" name="file" id="exampleInputPassword2" placeholder="Password"> 
+                                       <!-- <label for="exampleInputPassword1">ID/PASSPORT</label> -->
+                                       <!-- <input type="file" class="form-control" name="file" id="exampleInputPassword2" placeholder="Password">  -->
                                     </div>
                     
 
                                                 
                                     <div class="form-group col-sm-12">
                                        <!-- <label for="exampleTextarea">Home Address</label> -->
-                                       <textarea class="form-control" id="exampleTextarea" placeholder="Home Address"  name="address" rows="3"></textarea>
+                                       <!-- <textarea  id="exampleTextarea" placeholder="Home Address"  name="address" rows="3"></textarea> -->
+                                       <select name="paystatus" id="" class="form-control">
+                                       <option value="">Select Your Payment Mode</option>
+                                       <option value=1>Full Payment</option>
+                                       <option value=0>Partion Payment 75</option>
+                                       
+                                    </select>
                                     </div>
                                    
                                  </div>
@@ -172,7 +172,7 @@ if (isset($_POST['paynow'])) {
                                   <label class="custom-control custom-radio  m-b-20">
                                   <input name="pay" id="radioStacked1" checked value="cash" type="radio" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Cash
                                       <br> <img src="images/paypal.jpg" alt="" width="110"></span> </label>
-                                           
+                                          
                                 <label class="custom-control custom-radio  m-b-10">
                                    <input name="pay"  type="radio" value="paypal" class="custom-control-input"> <span class="custom-control-indicator"></span> <span class="custom-control-description">Credit Card
                                      <br><img src="images/paypal.jpg" alt="" width="110"></span> </label>

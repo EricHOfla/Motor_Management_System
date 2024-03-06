@@ -4058,7 +4058,7 @@ table.info-tabel tr td {
   text-align: center;
   top: 50%;
   width: 32px;
-  transform:translateY(-50%)
+  transform:translateY(-50%);
    -moz-transform:translateY(-50%);
     -o-transform:translateY(-50%);
      -webkit-transform:translateY(-50%);

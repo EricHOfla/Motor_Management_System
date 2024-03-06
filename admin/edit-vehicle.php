@@ -365,58 +365,58 @@ foreach($results as $result)
 <tr>
 <td>Displacement(cc)</td>
 
-<td><p> <input type="number" name="displ" value="<?php echo htmlentities($result->Displacement)?>" required> </p></td>
+<td><p> <input type="text" name="displ" value="<?php echo htmlentities($result->Displacement)?>" required> </p></td>
    </tr>
 
 <tr>
 <td>Max power (kw/rpm)</td>
-<td><p> <input type="number" name="maxpower" value="<?php echo htmlentities($result->Maxpower)?>" required> </p></td>
+<td><p> <input type="text" name="maxpower" value="<?php echo htmlentities($result->Maxpower)?>" required> </p></td>
 </tr>
 
 
 <tr>
 <td>Max torque</td>
-<td><p> <input type="number" name="maxtorque" value="<?php echo htmlentities($result->Maxtorque)?>" required> </p></td>
+<td><p> <input type="text" name="maxtorque" value="<?php echo htmlentities($result->Maxtorque)?>" required> </p></td>
 </tr>
 
 <tr>
 <td>Dimension(mm)</td>
-<td><p> <input type="number" name="dimens" value="<?php echo htmlentities($result->Dimension)?>" required> </p></td>
+<td><p> <input type="text" name="dimens" value="<?php echo htmlentities($result->Dimension)?>" required> </p></td>
 </tr>
 <tr>
 
 <td>Wheelbase (mm)</td>
-<td><p> <input type="number" name="wheelbase" value="<?php echo htmlentities($result->Wheelbase)?>" required> </p></td>
+<td><p> <input type="text" name="wheelbase" value="<?php echo htmlentities($result->Wheelbase)?>" required> </p></td>
 </tr>
 
 <tr>
 <td>Net weight (kg)</td>
-<td><p> <input type="number" name="netweight" value="<?php echo htmlentities($result->Netweight)?>" required> </p></td>
+<td><p> <input type="text" name="netweight" value="<?php echo htmlentities($result->Netweight)?>" required> </p></td>
 </tr>
 
 <tr>
 <td>Min ground clearence</td>
-<td><p> <input type="number" name="minground" value="<?php echo htmlentities($result->Mingroundclearence)?>" required> </p></td>
+<td><p> <input type="text" name="minground" value="<?php echo htmlentities($result->Mingroundclearence)?>" required> </p></td>
 </tr>
 
 <tr>
 <td>Front tyre</td>
-<td><p> <input type="number" name="ftyre" value="<?php echo htmlentities($result->Fronttyre)?>" required> </p></td>
+<td><p> <input type="text" name="ftyre" value="<?php echo htmlentities($result->Fronttyre)?>" required> </p></td>
 </tr>
 
 <tr>
 <td>Rear tyre</td>
-<td><p> <input type="number" name="rtyre" value="<?php echo htmlentities($result->Reartyre)?>" required> </p></td>
+<td><p> <input type="text" name="rtyre" value="<?php echo htmlentities($result->Reartyre)?>" required> </p></td>
 </tr>
 
 <tr>
 <td>Fuel tank capacity (L)</td>
-<td><p> <input type="number" name="fuel" value="<?php echo htmlentities($result->Fueltankcapacity)?>" required> </p></td>
+<td><p> <input type="text" name="fuel" value="<?php echo htmlentities($result->Fueltankcapacity)?>" required> </p></td>
 </tr>
 
 <tr>
 <td>Sitting height (mm)</td>
-<td><p> <input type="number" name="sitting" value="<?php echo htmlentities($result->Sittingheight)?>" required> </p></td>
+<td><p> <input type="text" name="sitting" value="<?php echo htmlentities($result->Sittingheight)?>" required> </p></td>
 </tr>
 
                   </tbody>

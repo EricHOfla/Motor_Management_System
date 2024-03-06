@@ -33,7 +33,7 @@ $msg="Page data updated  successfully";
 	<meta name="author" content="">
 	<meta name="theme-color" content="#3e454c">
 
-	<title>Bike Rental Portal |Admin Manage testimonials   </title>
+	<title>Bike sell |Admin Manage testimonials   </title>
 
 	<!-- Font awesome -->
 	<link rel="stylesheet" href="css/font-awesome.min.css">
@@ -100,8 +100,8 @@ $msg="Page data updated  successfully";
 											<th>Contact no</th>
 										<th>DOB</th>
 										<th>Address</th>
-										<th>City</th>
-										<th>Country</th>
+										<!-- <th>City</th> -->
+										<!-- <th>Country</th> -->
 										<th>Reg Date</th>
 
 										</tr>
@@ -125,8 +125,7 @@ foreach($results as $result)
 											<td><?php echo htmlentities($result->ContactNo);?></td>
 	<td><?php echo htmlentities($result->dob);?></td>
 											<td><?php echo htmlentities($result->Address);?></td>
-											<td><?php echo htmlentities($result->City);?></td>
-											<td><?php echo htmlentities($result->Country);?></td>
+											
 											<td><?php echo htmlentities($result->RegDate);?></td>
 										</tr>
 										<?php $cnt=$cnt+1; }} ?>

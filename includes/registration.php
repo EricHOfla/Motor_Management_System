@@ -5,12 +5,16 @@ if(isset($_POST['signup']))
 $fname=$_POST['fullname'];
 $email=$_POST['emailid']; 
 $mobile=$_POST['mobileno'];
+$dob=$_POST['dob'];
+$Address=$_POST['Address'];
 $password=md5($_POST['password']); 
-$sql="INSERT INTO  tblusers(FullName,EmailId,ContactNo,Password) VALUES(:fname,:email,:mobile,:password)";
+$sql="INSERT INTO  tblusers(FullName,EmailId,ContactNo,dob,Address,Password) VALUES(:fname,:email,:mobile,:dob,:address,:password)";
 $query = $dbh->prepare($sql);
 $query->bindParam(':fname',$fname,PDO::PARAM_STR);
 $query->bindParam(':email',$email,PDO::PARAM_STR);
 $query->bindParam(':mobile',$mobile,PDO::PARAM_STR);
+$query->bindParam(':dob',$dob,PDO::PARAM_STR);
+$query->bindParam(':address',$Address,PDO::PARAM_STR);
 $query->bindParam(':password',$password,PDO::PARAM_STR);
 $query->execute();
 $lastInsertId = $dbh->lastInsertId();
@@ -75,6 +79,14 @@ return true;
                 <div class="form-group">
                   <input type="email" class="form-control" name="emailid" id="emailid" onBlur="checkAvailability()" placeholder="Email Address" required="required">
                    <span id="user-availability-status" style="font-size:12px;"></span> 
+                </div>
+                <div class="form-group">
+                  <textarea class="form-control" name="Address" id="" cols="2" rows="3" required="required" placeholder="Address"></textarea>
+                 
+                </div><br>
+                <div class="form-group">
+                  <label for="">DOB:</label>
+                  <input type="date" class="form-control" name="dob" placeholder="Mobile Number" maxlength="10" required="required">
                 </div>
                 <div class="form-group">
                   <input type="password" class="form-control" name="password" placeholder="Password" required="required">

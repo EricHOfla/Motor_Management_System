@@ -336,58 +336,58 @@ Image 5<input type="file" name="img5">
 <tr>
 <td>Displacement(cc)</td>
 
-<td><p> <input type="number" name="displ" placeholder="Enter Displacement" required> </p></td>
+<td><p> <input type="text" name="displ" placeholder="Enter Displacement" required> </p></td>
    </tr>
 
 <tr>
 <td>Max power(kw/rpm)</td>
-<td><p> <input type="number" name="maxpower" placeholder="Enter Max Power" required> </p></td>
+<td><p> <input type="text" name="maxpower" placeholder="Enter Max Power" required> </p></td>
 </tr>
 
 
 <tr>
 <td>Max torque</td>
-<td><p> <input type="number" name="maxtorque" placeholder="Enter Max torque" required> </p></td>
+<td><p> <input type="text" name="maxtorque" placeholder="Enter Max torque" required> </p></td>
 </tr>
 
 <tr>
 <td>Dimension(mm)</td>
-<td><p> <input type="number" name="dimens" placeholder="Enter Dimension" required> </p></td>
+<td><p> <input type="text" name="dimens" placeholder="Enter Dimension" required> </p></td>
 </tr>
 <tr>
 
 <td>Wheelbase (mm)</td>
-<td><p> <input type="number" name="wheelbase" placeholder="Enter Wheelbase" required> </p></td>
+<td><p> <input type="text" name="wheelbase" placeholder="Enter Wheelbase" required> </p></td>
 </tr>
 
 <tr>
 <td>Net weight (kg)</td>
-<td><p> <input type="number" name="netweight" placeholder="Enter Net Weight" required> </p></td>
+<td><p> <input type="text" name="netweight" placeholder="Enter Net Weight" required> </p></td>
 </tr>
 
 <tr>
 <td>Min ground clearence</td>
-<td><p> <input type="number" name="minground" placeholder="Enter Min ground clearence" required> </p></td>
+<td><p> <input type="text" name="minground" placeholder="Enter Min ground clearence" required> </p></td>
 </tr>
 
 <tr>
 <td>Front tyre</td>
-<td><p> <input type="number" name="ftyre" placeholder="Enter Front tyre" required> </p></td>
+<td><p> <input type="text" name="ftyre" placeholder="Enter Front tyre" required> </p></td>
 </tr>
 
 <tr>
 <td>Rear tyre</td>
-<td><p> <input type="number" name="rtyre" placeholder="Enter Rear Tyre" required> </p></td>
+<td><p> <input type="text" name="rtyre" placeholder="Enter Rear Tyre" required> </p></td>
 </tr>
 
 <tr>
 <td>Fuel tank capacity (L)</td>
-<td><p> <input type="number" name="fuel" placeholder="Enter Fuel tank capacity" required> </p></td>
+<td><p> <input type="text" name="fuel" placeholder="Enter Fuel tank capacity" required> </p></td>
 </tr>
 
 <tr>
 <td>Sitting height (mm)</td>
-<td><p> <input type="number" name="sitting" placeholder="Enter Sitting height" required> </p></td>
+<td><p> <input type="text" name="sitting" placeholder="Enter Sitting height" required> </p></td>
 </tr>
 
                   </tbody>

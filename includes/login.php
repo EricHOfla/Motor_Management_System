@@ -3,7 +3,7 @@ if(isset($_POST['login']))
 {
 $email=$_POST['email'];
 $password=md5($_POST['password']);
-$sql ="SELECT EmailId,Password,FullName FROM tblusers WHERE EmailId=:email and Password=:password";
+$sql ="SELECT EmailId,Password,FullName,id FROM tblusers WHERE EmailId=:email and Password=:password";
 $query= $dbh -> prepare($sql);
 $query-> bindParam(':email', $email, PDO::PARAM_STR);
 $query-> bindParam(':password', $password, PDO::PARAM_STR);
@@ -11,11 +11,17 @@ $query-> execute();
 $results=$query->fetchAll(PDO::FETCH_OBJ);
 if($query->rowCount() > 0)
 {
+
+
+foreach($results as $result)
+{
+
 $_SESSION['login']=$_POST['email'];
-$_SESSION['fname']=$results->FullName;
+$_SESSION['fname']=$result->FullName;
+$_SESSION['id']=$result->id;
 $currentpage=$_SERVER['REQUEST_URI'];
 echo "<script type='text/javascript'> document.location = '$currentpage'; </script>";
-} else{
+} }else{
   
   echo "<script>alert('Invalid Details');</script>";
 
