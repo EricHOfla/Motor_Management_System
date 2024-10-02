@@ -1,1 +1,1 @@
-# Motor_Management_System_Project
+# Motor_Management_System_Projects
